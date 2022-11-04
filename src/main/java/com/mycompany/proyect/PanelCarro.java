@@ -4,46 +4,87 @@
  */
 package com.mycompany.proyect;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author VIBEXZ
  */
 public class PanelCarro extends javax.swing.JFrame {
 
-   
     public PanelCarro() {
         initComponents();
     }
-    
-    
+
     Cola c1 = new Cola();
-    
-    
-    public void agregar(){
-       String a = jTextField1.getText();
-       String b = jTextField2.getText();
-       String c = jTextField3.getText();
-       String d = jTextField4.getText();
-       String e = jTextField5.getText();
-       String f = jTextField6.getText();
-       String g = jTextField7.getText();
-       String h = jTextField8.getText();
-       int i = Integer.parseInt(jTextField9.getText());
-       String j = jTextField10.getText();        
-        c1.encolar(a,b,c,d,e,f,g,h,i,j);
-        
-    
+
+    public void agregar() {
+        String a = jTextField1.getText();
+        String b = jTextField2.getText();
+        String c = jTextField3.getText();
+        String d = jTextField4.getText();
+        String e = jTextField5.getText();
+        String f = jTextField6.getText();
+        String g = jTextField7.getText();
+        String h = jTextField8.getText();
+        int i = Integer.parseInt(jTextField9.getText());
+        String j = jTextField10.getText();
+        String k = jTextField11.getText();
+        c1.encolar(a, b, c, d, e, f, g, h, i, j, k);
+
+        /*
+        jTextField1.setText(" ");
+        jTextField2.setText(" ");
+        jTextField3.setText(" ");
+        jTextField4.setText(" ");
+        jTextField5.setText(" ");
+        jTextField6.setText(" ");
+        jTextField7.setText(" ");
+        jTextField8.setText(" ");
+        jTextField10.setText(" ");
+        jTextField11.setText(" ");
+         */
+    }
+
+    public void mostrar() {
+
+        c1.Mostrar();
+
+    }
+
+    public void eliminar() {
+
+        String a = jTextField1.getText();
+        String b = jTextField11.getText();
+        c1.eliminar(a, b);
+
     }
     
-    public void mostrar(){
-        
-    c1.Mostrar();
+    
+    public void modificar(){
+        String v = jTextField1.getText();
+        String b = jTextField2.getText();
+        String c = jTextField3.getText();
+        String d = jTextField4.getText();
+        String e = jTextField5.getText();
+        String f = jTextField6.getText();
+        String g = jTextField7.getText();
+        String h = jTextField8.getText();
+        int i = Integer.parseInt(jTextField9.getText());
+        String j = jTextField10.getText();
+        String k = jTextField11.getText();
+       c1.modificar(v, b, c, d, e, f, g, h, i, j, k);
+    
+    
+    
+    
+    
+    
     
     
     
     }
-    
-   
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -136,6 +177,11 @@ public class PanelCarro extends javax.swing.JFrame {
         jLabel12.setText("ESTADO");
 
         jButton3.setText("ELIMINAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("LISTA DE VEHICULOS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +291,7 @@ public class PanelCarro extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel11))
                 .addGap(11, 11, 11)
@@ -279,7 +325,7 @@ public class PanelCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+modificar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -293,6 +339,10 @@ public class PanelCarro extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         mostrar();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        eliminar();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
