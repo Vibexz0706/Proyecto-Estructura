@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyect;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author VIBEXZ
@@ -23,7 +25,7 @@ public class Cola {
 
     }
 
-    public void encolar(String placa, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info) {
+    public void encolar(String placa, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info, String eliminar) {
 
         Carro newNodo = new Carro();
         newNodo.setPlaca(placa);
@@ -36,7 +38,7 @@ public class Cola {
         newNodo.setCapacidad(caácidad);
         newNodo.setAlquiler(alquiler);
         newNodo.setInfo(info);
-
+        newNodo.setEliminar(eliminar);
         if (head == null) {
 
             head = newNodo;
@@ -58,7 +60,7 @@ public class Cola {
 
             while (aux != null) {
 
-                System.out.print(aux.getPlaca() + "-" + aux.getMarca() + "-" + aux.getModelo() + "-" + aux.getAño() + "-" + aux.getColor() + "-" + aux.getCilindraje() + "-" + aux.getCombustible() + "-" + aux.getCapacidad() + "-" + aux.getAlquiler() + "-" + aux.getInfo());
+                System.out.print("/" + aux.getPlaca() + "-" + aux.getMarca() + "-" + aux.getModelo() + "-" + aux.getAño() + "-" + aux.getColor() + "-" + aux.getCilindraje() + "-" + aux.getCombustible() + "-" + aux.getCapacidad() + "-" + aux.getAlquiler() + "-" + aux.getInfo() + "-" + aux.getEliminar());
 
                 aux = aux.getNext();
 
@@ -72,37 +74,45 @@ public class Cola {
 
     }
 
-    public void eliminar(String placa) {
+    public void eliminar(String placa, String e) {
 
         Carro aux = new Carro();
         aux.setPlaca(placa);
+        aux.setEliminar(e);
+        if ("Alquilado".equalsIgnoreCase(aux.getEliminar())) {
+            JOptionPane.showMessageDialog(null, "No se puede elimiar esta alquilado");
+           
 
-        if (head != null) {
-            if (head == tail && placa.equals(head.getPlaca())) {
+        } else {
 
-                head = tail = null;
+            if (head != null) {
+                if (head == tail && placa.equalsIgnoreCase(head.getPlaca())) {
 
-            } else if (aux.getPlaca().equals(head.getPlaca())) {
+                    head = tail = null;
 
-                head = head.getNext();
+                } else if (aux.getPlaca().equalsIgnoreCase(head.getPlaca())) {
 
-            } else {
-                Carro temporal = new Carro();
-                Carro anterior = new Carro();
-                anterior = head;
-                temporal = head.getNext();
-                while (temporal != null && !temporal.getPlaca().equals(aux.getPlaca())) {
+                    head = head.getNext();
 
-                    anterior = anterior.getNext();
-                    temporal = temporal.getNext();
+                } else {
+                    Carro temporal = new Carro();
+                    Carro anterior = new Carro();
+                    anterior = head;
+                    temporal = head.getNext();
+                    while (temporal != null && !temporal.getPlaca().equalsIgnoreCase(aux.getPlaca())) {
 
-                }
-                if (temporal != null) {
-                    anterior.setNext(temporal.getNext());
+                        anterior = anterior.getNext();
+                        temporal = temporal.getNext();
 
-                    if (temporal == tail) {
-                        
-                        tail = anterior;
+                    }
+                    if (temporal != null) {
+                        anterior.setNext(temporal.getNext());
+
+                        if (temporal == tail) {
+
+                            tail = anterior;
+
+                        }
 
                     }
 
@@ -112,6 +122,54 @@ public class Cola {
 
         }
 
+    }
+    
+    
+    
+    public void modificar( String b, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info, String eliminar){
+        
+        Carro aux = new Carro();
+        
+        aux = head;
+        boolean encontrado = false;
+        
+        if(head != null){
+            
+            while(aux != null && encontrado != true){
+                
+                if(aux.getPlaca().equals(b)){
+                    JOptionPane.showMessageDialog(null, "REGISTRO ENCONTRADO");
+                    aux.setMarca(marca);
+                    aux.setModelo(modelo);
+                    aux.setAño(año);
+                    aux.setColor(color);
+                    aux.setCilindraje(cilindraje);
+                    aux.setCombustible(combustible);
+                    aux.setCapacidad(caácidad);
+                    aux.setAlquiler(alquiler);
+                    aux.setInfo(info);
+                    aux.setEliminar(eliminar);
+                    
+
+                    encontrado = true;
+                
+                }
+                aux = aux.getNext();
+            
+            
+            }
+            
+        
+        }
+        
+        
+    
+       
+        
+        
+        
+    
+    
     }
 
 }
