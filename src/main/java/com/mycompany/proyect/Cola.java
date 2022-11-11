@@ -10,6 +10,20 @@ import javax.swing.JOptionPane;
  *
  * @author VIBEXZ
  */
+
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
+
+
 public class Cola {
 
     private Carro head;
@@ -24,8 +38,7 @@ public class Cola {
     Cola() {
 
     }
-
-    public void encolar(String placa, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info, String eliminar) {
+    public void encolar(String placa, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info) {
 
         Carro newNodo = new Carro();
         newNodo.setPlaca(placa);
@@ -38,7 +51,7 @@ public class Cola {
         newNodo.setCapacidad(caácidad);
         newNodo.setAlquiler(alquiler);
         newNodo.setInfo(info);
-        newNodo.setEliminar(eliminar);
+        
         if (head == null) {
 
             head = newNodo;
@@ -48,6 +61,30 @@ public class Cola {
             tail.setNext(newNodo);
             tail = newNodo;
 
+        }
+        
+        
+          try {
+            
+            FileWriter fw = new FileWriter("notas.txt", true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            pw.print(" ( " + " "+ "PLACA: " + newNodo.getPlaca());
+            pw.print(" - " + " "+ "MARCA: " + newNodo.getMarca());
+            pw.print(" - " + " "+ "MODELO: " + newNodo.getModelo());
+            pw.print(" - " + " "+ "AÑO: " + newNodo.getAño());
+            pw.print(" - " + " "+ "COLOR: " + newNodo.getColor());
+            pw.print(" - " + " "+ "CILINDRAJE: " + newNodo.getCilindraje());
+            pw.print(" - " + " "+ "COMBUSTIBLE: " + newNodo.getCombustible());
+            pw.print(" - " + " "+ "CAPACIDAD: " + newNodo.getCapacidad());
+            pw.print(" - " + " "+ "PRECIO-AQLUILER: " + newNodo.getAlquiler());
+            pw.print(" - " + " "+ "INFOR-EXTRA: " + newNodo.getInfo()+ " ) \n");
+            pw.close();
+            
+        } catch (IOException e) {
+            
+            System.out.print("sss");
+            
         }
 
     }
@@ -74,16 +111,12 @@ public class Cola {
 
     }
 
-    public void eliminar(String placa, String e) {
+    public void eliminar(String placa) {
 
         Carro aux = new Carro();
         aux.setPlaca(placa);
-        aux.setEliminar(e);
-        if ("Alquilado".equalsIgnoreCase(aux.getEliminar())) {
-            JOptionPane.showMessageDialog(null, "No se puede elimiar esta alquilado");
-           
-
-        } else {
+        
+        
 
             if (head != null) {
                 if (head == tail && placa.equalsIgnoreCase(head.getPlaca())) {
@@ -120,13 +153,11 @@ public class Cola {
 
             }
 
-        }
+        
 
     }
-    
-    
-    
-    public void modificar( String b, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info, String eliminar){
+
+    public void modificar( String b, String marca, String modelo, String año, String color, String cilindraje, String combustible, String caácidad, int alquiler, String info){
         
         Carro aux = new Carro();
         
@@ -148,7 +179,7 @@ public class Cola {
                     aux.setCapacidad(caácidad);
                     aux.setAlquiler(alquiler);
                     aux.setInfo(info);
-                    aux.setEliminar(eliminar);
+                    
                     
 
                     encontrado = true;
@@ -173,3 +204,5 @@ public class Cola {
     }
 
 }
+
+    

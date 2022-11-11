@@ -1,0 +1,2 @@
+ (  PLACA: a -  MARCA: a -  MODELO: a -  AÑO: a -  COLOR: a -  CILINDRAJE: a -  COMBUSTIBLE: a -  CAPACIDAD: a -  PRECIO-AQLUILER: 111 -  INFOR-EXTRA: a ) 
+ (  PLACA: a -  MARCA: a -  MODELO: a -  AÑO: a -  COLOR: a -  CILINDRAJE: a -  COMBUSTIBLE: a -  CAPACIDAD: a -  PRECIO-AQLUILER: 111 -  INFOR-EXTRA: a ) 
